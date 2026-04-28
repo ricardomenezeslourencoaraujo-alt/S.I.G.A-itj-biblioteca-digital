@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background-color: #0b4b9b;
+}
+
+/* Acessibilidade */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #17c8cc;
+  outline-offset: 2px;
+}
+a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.full-background {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.container {
+    background-color: #ffffff00;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ---------- CABEÇALHO FIXO COMPARTILHADO ---------- */
+.auth-header {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-header .back-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.auth-header .back-arrow:hover {
+  background-color: rgba(45, 136, 255, 0.1);
+  color: #2d88ff;
+}
+
+.auth-header .brand-logo {
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  line-height: 1;
+}
+
+.blue-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #2d88ff;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Cores padrão (login - claro) */
+.auth-header,
+.auth-header a {
+  color: #333333;
+}
+
+/* Tema escuro (registro ativo) */
+.auth-header.dark-theme,
+.auth-header.dark-theme a {
+  color: #ffffff;
+}
+
+.auth-header.dark-theme .back-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+}
+
+/* Ajuste fino opcional caso haja diferença de 1px no tema escuro (descomente se necessário) */
+/* .auth-header.dark-theme .blue-dot { transform: translateY(-1px); } */
+
+/* ---------- FORMULÁRIOS ---------- */
+.container form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 60px;
+    height: 100%;
+    text-align: left;
+}
+
+.dot-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+.dot-title::after {
+    content: '.';
+    color: #2d88ff;
+}
+
+/* Tema Branco (Login) */
+.sign-in form { background-color: #ffffff; color: #333333; }
+.sign-in .dot-title { color: #111111; }
+.sign-in span, .options-group label { 
+    cursor: pointer; 
+    color: #555; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.options-group input[type="checkbox"] { margin: 0; cursor: pointer; }
+.sign-in .input-group input:focus { background-color: #ffffff; border-color: #2d88ff; }
+.sign-in .input-group input::placeholder { color: #9ca3af; }
+.sign-in .icon-input, .sign-in .toggle-eye { color: #9ca3af; }
+.sign-in .toggle-eye:hover { color: #333333; }
+
+.sign-in .caps-warning {
+    color: #003f7a;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Tema Azul Deep (Registro) */
+.sign-up form { background-color: #021a3a; color: #ffffff; }
+.sign-up .dot-title { color: #ffffff; }
+.sign-up span { color: #b3cce6; font-size: 13px; margin-bottom: 25px; display: block;}
+
+.sign-up .input-group input { 
+    background-color: #041d40; 
+    color: #ffffff; 
+    border: 1.5px solid transparent; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.sign-up .input-group input::placeholder { color: #7a9cc2; }
+.sign-up .icon-input { color: #7a9cc2; transition: color 0.3s; }
+
+.sign-up .input-group input:focus { 
+    background-color: #ffffff; 
+    color: #333333; 
+    border-color: #2d88ff; 
+}
+.sign-up .input-group input:focus + .icon-input { color: #2d88ff; }
+.sign-up .input-group input:focus ~ .toggle-eye { color: #2d88ff; }
+
+.sign-up .caps-warning {
+    color: #ffffff;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Estrutura dos inputs */
+.input-group { position: relative; width: 100%; margin: 10px 0; }
+.input-group input { padding: 16px 20px; font-size: 14px; border-radius: 12px; width: 100%; outline: none; transition: 0.3s; }
+.input-group .icon-input, .input-group .toggle-eye { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+.input-group .toggle-eye { cursor: pointer; }
+.options-group { display: flex; justify-content: space-between; width: 100%; margin-top: 15px; }
+
+/* Botões */
+.buttons-layout { margin-top: 25px; width: 100%; }
+.btn-primary { background-color: #2d88ff; color: #fff; font-size: 14px; padding: 14px 0; width: 100%; border: none; border-radius: 25px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { background-color: #1a73e8; }
+.btn-secondary { background-color: transparent; color: #fff; font-size: 12px; padding: 12px 40px; border: 2px solid #fff; border-radius: 25px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 15px; cursor: pointer; transition: 0.3s; }
+.btn-secondary:hover { background-color: rgba(255, 255, 255, 0.2); }
+
+/* Animação */
+.form-container { position: absolute; top: 0; height: 100%; transition: all 0.6s ease-in-out; }
+.sign-in { left: 0; width: 50%; z-index: 2; }
+.container.active .sign-in { transform: translateX(100%); }
+.sign-up { left: 0; width: 50%; opacity: 0; z-index: 1; }
+.container.active .sign-up { transform: translateX(100%); opacity: 1; z-index: 5; animation: move 0.6s; }
+
+@keyframes move {
+    0%, 49.99% { opacity: 0; z-index: 1; }
+    50%, 100% { opacity: 1; z-index: 5; }
+}
+
+/* Painel lateral */
+.toggle-container { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; overflow: hidden; transition: all 0.6s ease-in-out; z-index: 1000; }
+.container.active .toggle-container { transform: translateX(-100%); }
+
+.toggle {
+    /* 1. Adicionado ../ antes de Imagens (comum se o CSS estiver em uma pasta) */
+    background-image: linear-gradient(rgba(38, 41, 51, 0.4), rgba(38, 41, 51, 0.8)), 
+                      url('../Imagens/fundo_alu.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    
+    /* 2. Teste de visibilidade: garante que o elemento tenha volume */
+    min-height: 100vh; 
+    display: block;
+}
+
+
+.container.active .toggle { transform: translateX(50%); }
+
+.toggle-panel { position: absolute; width: 50%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 0 40px; text-align: center; top: 0; transform: translateX(0); transition: all 0.6s ease-in-out; }
+.toggle-panel p { font-size: 14px; line-height: 22px; margin: 20px 0; color: #e2e8f0; }
+.toggle-left { transform: translateX(-200%); }
+.container.active .toggle-left { transform: translateX(0); }
+.toggle-right { right: 0; transform: translateX(0); }
+
+/* Seletor de idioma */
+.language-wrapper {
+  position: absolute; 
+  top: 22px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.2s;
+  font-weight: 500;
+  line-height: 1.5;
+  appearance: none;
+}
+.language-button:hover { background: #f0f0f0; }
+
+.flag {
+  width: 25px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.language-button svg {
+  width: 14px;
+  height: 14px;
+  stroke: #333;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+  margin-left: 4px;
+}
+
+.language-list {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  padding: 8px 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.language-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+.language-list li:hover { background: #f4f6f9; }
+.language-wrapper.active .language-list { display: block; }
+.language-wrapper.active svg { transform: rotate(180deg); }
+
+.error-message, .reg-error-message {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* Transição suave para cores do cabeçalho */
+.auth-header,
+.auth-header a,
+.auth-header .brand-logo {
+  transition: color 0.2s ease;
+}
+
+/* ATRASO específico para o botão "SiGA ITJ" */
+.auth-header .brand-logo {
+  transition-delay: 0.3s;
+}
+.google-login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.google-login-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  color: #757575;
+  border: 1px solid #dadce0;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+.google-login-btn:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3);
+}
+.google-login-btn i {
+  font-size: 18px;
+}
+.google-login-btn i.fa-google {
+  color: #db4437;  /* vermelho Google */
+  font-size: 18px; /* mantém o tamanho atual, ajuste se necessário */
+}
