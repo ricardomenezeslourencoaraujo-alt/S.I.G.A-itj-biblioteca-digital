@@ -16,21 +16,21 @@
 
     <!-- SELETOR DE IDIOMA -->
     <div class="language-wrapper">
-      <button class="language-button" aria-label="Selecionar idioma" aria-expanded="false">
+      <button class="language-button" aria-label="Selecionar idioma" aria-expanded="false" aria-haspopup="listbox">
         <img src="Imagens/br.png" class="flag" alt="Bandeira do Brasil" id="current-flag">
         <span id="current-lang-text">PT</span>
         <svg viewBox="0 0 24 24">
           <path d="M7 10l5 5 5-5"/>
         </svg>
       </button>
-      <ul class="language-list">
-        <li data-lang="pt" tabindex="0">
+      <ul class="language-list" role="listbox">
+        <li data-lang="pt" tabindex="0" role="option" aria-selected="true">
           <img src="Imagens/br.png" class="flag" alt="Português"> Português
         </li>
-        <li data-lang="en" tabindex="0">
+        <li data-lang="en" tabindex="0" role="option">
           <img src="Imagens/us.png" class="flag" alt="English"> English
         </li>
-        <li data-lang="es" tabindex="0">
+        <li data-lang="es" tabindex="0" role="option">
           <img src="Imagens/es.png" class="flag" alt="Español"> Español
         </li>
       </ul>
@@ -98,18 +98,17 @@
               <input type="checkbox">
               <span id="text-remember">Lembrar-me</span>
             </label>
-            <a href="#" id="link-forgot">Esqueceu a senha?</a>
+            <a href="#!" id="link-forgot">Esqueceu a senha?</a>
           </div>
           <div class="buttons-layout">
             <button type="submit" class="btn-primary" id="btn-submit-login">
               Entrar
-              </button>
+            </button>
             <div class="google-login-container">
               <button type="button" class="google-login-btn" id="googleLoginBtn">
                 <i class="fab fa-google"></i> Entrar com Google
               </button>
             </div>
-            
           </div>
         </form>
       </div>

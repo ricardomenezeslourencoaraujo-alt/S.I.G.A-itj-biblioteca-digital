@@ -1,15 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ──────────────────────────────────────────────
+  // Referências
+  // ──────────────────────────────────────────────
   const googleBtn = document.getElementById('googleLoginBtn');
-  if (googleBtn) {
-    googleBtn.addEventListener('click', () => {
-      // Mensagem de alerta poderia ser internacionalizada, mas mantida conforme original
-      alert('Integração com Google em desenvolvimento. Em breve você poderá logar com sua conta Google.');
-    });
-  }
-
-  let idiomaAtual = "pt";
-
   const container = document.getElementById('container');
   const wrapper = document.querySelector(".language-wrapper");
   const langBtn = document.querySelector(".language-button");
@@ -34,8 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const authHeader = document.querySelector('.auth-header');
 
-  capsWarningReg.style.display = "none";
-  capsWarningLogin.style.display = "none";
+  // ──────────────────────────────────────────────
+  // Traduções completas
+  // ──────────────────────────────────────────────
+  let idiomaAtual = "pt";
 
   const translations = {
     pt: {
@@ -60,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
       msgError: "EMAIL OU SENHA INVÁLIDOS!",
       msgMatchError: "AS SENHAS NÃO CONFEREM!",
       msgCaps: "Caps Lock ativado!",
-      googleBtn: "Entrar com Google"      // ← Adicionado
+      googleBtn: "Entrar com Google",
+      googleAlert: "Integração com Google em desenvolvimento. Em breve você poderá logar com sua conta Google."
     },
     en: {
       flag: "Imagens/us.png",
@@ -84,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
       msgError: "INVALID EMAIL OR PASSWORD!",
       msgMatchError: "PASSWORDS DO NOT MATCH!",
       msgCaps: "Caps Lock is on!",
-      googleBtn: "Sign in with Google"    // ← Adicionado
+      googleBtn: "Sign in with Google",
+      googleAlert: "Google integration under development. Soon you'll be able to log in with your Google account."
     },
     es: {
       flag: "Imagens/es.png",
@@ -108,11 +106,45 @@ document.addEventListener("DOMContentLoaded", () => {
       msgError: "¡CORREO O CONTRASEÑA INVÁLIDOS!",
       msgMatchError: "¡LAS CONTRASEÑAS NO COINCIDEN!",
       msgCaps: "¡Bloq Mayús activado!",
-      googleBtn: "Iniciar sesión con Google" // ← Adicionado
+      googleBtn: "Iniciar sesión con Google",
+      googleAlert: "Integración con Google en desarrollo. Pronto podrás iniciar sesión con tu cuenta de Google."
     }
   };
 
-  // Troca de tela + tema do cabeçalho
+  // ──────────────────────────────────────────────
+  // Utilidade: exibir mensagens (erro/sucesso)
+  // ──────────────────────────────────────────────
+  function showMessage(element, isSuccess, isMatchError = false) {
+    const t = translations[idiomaAtual];
+    element.style.display = "block";
+    element.style.color = isSuccess ? "#16a34a" : "#dc2626"; // verde / vermelho
+    element.style.backgroundColor = isSuccess ? "rgba(22,163,74,0.08)" : "rgba(220,38,38,0.08)";
+    element.style.border = `1px solid ${isSuccess ? "#16a34a" : "#dc2626"}`;
+
+    if (isMatchError) {
+      element.textContent = t.msgMatchError;
+    } else {
+      element.textContent = isSuccess ? t.msgSuccess : t.msgError;
+    }
+  }
+
+  function clearMessages() {
+    errorMessage.style.display = "none";
+    regErrorMessage.style.display = "none";
+  }
+
+  // ──────────────────────────────────────────────
+  // Botão Google (alerta internacionalizado)
+  // ──────────────────────────────────────────────
+  if (googleBtn) {
+    googleBtn.addEventListener('click', () => {
+      alert(translations[idiomaAtual].googleAlert);
+    });
+  }
+
+  // ──────────────────────────────────────────────
+  // Alternar entre Login / Registro + tema escuro
+  // ──────────────────────────────────────────────
   document.getElementById('register').addEventListener('click', () => {
     container.classList.add("active");
     authHeader.classList.add('dark-theme');
@@ -124,26 +156,28 @@ document.addEventListener("DOMContentLoaded", () => {
     clearMessages();
   });
 
-  function clearMessages() {
-    errorMessage.style.display = "none";
-    regErrorMessage.style.display = "none";
-  }
-
+  // ──────────────────────────────────────────────
+  // Olho de visibilidade das senhas
+  // ──────────────────────────────────────────────
   function setupToggle(toggleId, inputId) {
     const toggle = document.getElementById(toggleId);
     const input = document.getElementById(inputId);
     if (!toggle || !input) return;
     toggle.addEventListener("click", (e) => {
       e.preventDefault();
-      input.type = input.type === "password" ? "text" : "password";
-      toggle.classList.toggle("fa-eye");
-      toggle.classList.toggle("fa-eye-slash");
+      const isPassword = input.type === "password";
+      input.type = isPassword ? "text" : "password";
+      toggle.classList.toggle("fa-eye", isPassword);
+      toggle.classList.toggle("fa-eye-slash", !isPassword);
     });
   }
   setupToggle("togglePasswordLogin", "login-password");
   setupToggle("togglePasswordReg", "reg-password");
   setupToggle("toggleConfirmPasswordReg", "reg-confirm-password");
 
+  // ──────────────────────────────────────────────
+  // Seletor de idioma
+  // ──────────────────────────────────────────────
   langBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     wrapper.classList.toggle("active");
@@ -194,30 +228,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ──────────────────────────────────────────────
+  // Caps Lock
+  // ──────────────────────────────────────────────
   function handleCaps(input, warning) {
-    input.addEventListener("keyup", (e) => warning.style.display = e.getModifierState("CapsLock") ? "block" : "none");
-    input.addEventListener("focusout", () => warning.style.display = "none");
+    input.addEventListener("keyup", (e) => {
+      warning.style.display = e.getModifierState("CapsLock") ? "block" : "none";
+    });
+    input.addEventListener("focusout", () => {
+      warning.style.display = "none";
+    });
   }
   handleCaps(loginPassword, capsWarningLogin);
   handleCaps(regPassword, capsWarningReg);
 
+  // ──────────────────────────────────────────────
+  // Submissão do formulário de Login
+  // ──────────────────────────────────────────────
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    clearMessages(); // some com qualquer mensagem anterior
     const btn = document.getElementById("btn-submit-login");
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
     setTimeout(() => {
       const isValid = loginEmail.value.trim() === "admin@email.com" && loginPassword.value.trim() === "123";
-      showMessage(errorMessage, isValid);
+      if (isValid) {
+        showMessage(errorMessage, true);
+        // Redirecionamento opcional: window.location.href = "dashboard.html";
+      } else {
+        showMessage(errorMessage, false);
+      }
       btn.textContent = translations[idiomaAtual].btnLogin;
     }, 800);
   });
 
+  // ──────────────────────────────────────────────
+  // Submissão do formulário de Registro
+  // ──────────────────────────────────────────────
   regForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    clearMessages();
+
     if (regPassword.value !== regConfirmPassword.value) {
-      showMessage(regErrorMessage, false, true);
+      showMessage(regErrorMessage, false, true); // true = erro de match
       return;
     }
+
     const btn = document.getElementById("btn-submit-register");
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
     setTimeout(() => {
@@ -227,4 +283,4 @@ document.addEventListener("DOMContentLoaded", () => {
       capsWarningReg.style.display = "none";
     }, 800);
   });
-})
+});
