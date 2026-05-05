@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Registro - SiGA ITJ</title>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/login_user.css">
+  <!-- JS -->
+  <script src="js/login_user.js" defer></script>
+</head>
+<body>
+  <div class="full-background">
+
+    <!-- SELETOR DE IDIOMA -->
+    <div class="language-wrapper">
+      <button class="language-button" aria-label="Selecionar idioma" aria-expanded="false" aria-haspopup="listbox">
+        <img src="Imagens/br.png" class="flag" alt="Bandeira do Brasil" id="current-flag">
+        <span id="current-lang-text">PT</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5"/>
+        </svg>
+      </button>
+      <ul class="language-list" role="listbox">
+        <li data-lang="pt" tabindex="0" role="option" aria-selected="true">
+          <img src="Imagens/br.png" class="flag" alt="Português"> Português
+        </li>
+        <li data-lang="en" tabindex="0" role="option">
+          <img src="Imagens/us.png" class="flag" alt="English"> English
+        </li>
+        <li data-lang="es" tabindex="0" role="option">
+          <img src="Imagens/es.png" class="flag" alt="Español"> Español
+        </li>
+      </ul>
+    </div>
+
+    <!-- CABEÇALHO FIXO COMPARTILHADO -->
+    <div class="auth-header">
+      <a href="preview.html" class="back-arrow" aria-label="Voltar para página inicial">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <a href="preview.html" class="brand-logo">
+        <span class="blue-dot"></span> SiGA ITJ
+      </a>
+    </div>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <div class="container" id="container">
+
+      <!-- REGISTRO -->
+      <div class="form-container sign-up">
+        <form id="form-register" autocomplete="off">
+          <h1 id="title-register" class="dot-title">Crie sua Conta</h1>
+          <div class="reg-error-message" style="display:none;"></div>
+          <div class="input-group">
+            <input type="text" placeholder="Nome" id="reg-name" required>
+            <i class="fas fa-id-card icon-input"></i>
+          </div>
+          <div class="input-group">
+            <input type="email" placeholder="Email" id="reg-email" required>
+            <i class="fas fa-envelope icon-input"></i>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Senha" id="reg-password" required>
+            <i class="fas fa-eye toggle-eye" id="togglePasswordReg"></i>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Confirmar Senha" id="reg-confirm-password" required>
+            <i class="fas fa-eye toggle-eye" id="toggleConfirmPasswordReg"></i>
+          </div>
+          <p id="caps_warning_reg" class="caps-warning">Caps Lock ativado!</p>
+          <div class="buttons-layout">
+            <button type="submit" class="btn-primary" id="btn-submit-register">
+              Criar conta
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="form-container sign-in">
+        <form id="form-login" autocomplete="off">
+          <h1 id="title-login" class="dot-title">Faça seu Login</h1>
+          <div class="error-message" style="display:none;"></div>
+          <div class="input-group">
+            <input type="email" placeholder="Email" id="login-email" required>
+            <i class="fas fa-envelope icon-input"></i>
+          </div>
+          <div class="input-group">
+            <input type="password" placeholder="Senha" id="login-password" required>
+            <i class="fas fa-eye toggle-eye" id="togglePasswordLogin"></i>
+          </div>
+          <p id="caps_warning" class="caps-warning">Caps Lock ativado!</p>
+          <div class="options-group">
+            <label>
+              <input type="checkbox">
+              <span id="text-remember">Lembrar-me</span>
+            </label>
+            <a href="#!" id="link-forgot">Esqueceu a senha?</a>
+          </div>
+          <div class="buttons-layout">
+            <button type="submit" class="btn-primary" id="btn-submit-login">
+              Entrar
+            </button>
+            <div class="google-login-container">
+              <button type="button" class="google-login-btn" id="googleLoginBtn">
+                <i class="fab fa-google"></i> Entrar com Google
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- PAINEL LATERAL -->
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1 id="panel-title-left">Já nos conhece?</h1>
+            <p id="panel-desc-left">Acesse sua conta para continuar sua jornada acadêmica.</p>
+            <button class="btn-secondary" id="login">ENTRAR</button>
+          </div>
+          <div class="toggle-panel toggle-right">
+            <h1 id="panel-title-right">Novo por aqui?</h1>
+            <p id="panel-desc-right">Junte-se a nós e comece sua jornada acadêmica hoje mesmo.</p>
+            <button class="btn-secondary" id="register">REGISTRE-SE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

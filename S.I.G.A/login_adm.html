@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Administrador</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/login_adm.css">
+    
+  <script src="js/login_adm.js" defer></script>
+</head>
+<body>
+
+  <!-- SETA DE VOLTAR (FORA DO CARD, CANTO SUPERIOR ESQUERDO) -->
+  <a href="preview.html" class="back-arrow-adm" aria-label="Voltar para página inicial">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+
+  <div class="bg-decoration-1"></div>
+  
+  <img src="Imagens/tucktuck.png" alt="Livro" class="bg-image-book">
+
+  <div class="language-wrapper">
+    <button type="button" class="language-button" aria-label="Selecionar idioma">
+      <img src="Imagens/br.png" class="flag" alt="Bandeira do Brasil">
+      <span>PT</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5"/>
+      </svg>
+    </button>
+
+    <ul class="language-list">
+      <li data-lang="pt" tabindex="0">
+        <img src="Imagens/br.png" class="flag" alt="Português"> Português
+      </li>
+      <li data-lang="en" tabindex="0">
+        <img src="Imagens/us.png" class="flag" alt="English"> English
+      </li>
+      <li data-lang="es" tabindex="0">
+        <img src="Imagens/es.png" class="flag" alt="Español"> Español
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="login-card">
+
+      <img src="Imagens/logo_uau.png" alt="Logo" class="logo">
+
+      <h2 id="title">Login Administrador</h2>
+      <p id="subtitle">Acesso ao painel administrativo</p>
+
+      <p class="error-message"></p>
+
+      <form>
+        <label id="label_email">Email</label>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input id="input_email" type="email" placeholder="Digite seu email" required>
+        </div>
+
+        <label id="label_senha">Senha</label>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input id="input_senha" type="password" placeholder="Digite sua senha" required>
+          <i class="fas fa-eye toggle-password" id="togglePassword" tabindex="0"></i>
+        </div>
+        
+        <p id="caps_warning" class="caps-warning" style="display: none;">Caps Lock ativado!</p>
+
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            <span id="label_lembrar">Lembrar-me</span> 
+          </label>
+
+          <a id="mudar_senha" href="#" class="forgot">Esqueceu sua senha?</a>
+        </div>
+        
+        <button id="bot_entrar" type="submit" class="btn-primary">Entrar</button>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+</html>
