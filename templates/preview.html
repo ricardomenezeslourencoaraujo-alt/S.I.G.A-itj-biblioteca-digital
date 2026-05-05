@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso - SiGA ITJ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/preview.css">
+</head>
+<body>
+
+  <!-- BOTÃO WHATSAPP FLUTUANTE (mantido) -->
+  <a href="https://wa.me/5511912345678" class="whatsapp-float" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="bg-shape"></div>
+
+  <header class="top-header">
+    <div class="logo">
+      <i class="fas fa-book-reader"></i>
+      <span><strong>SiGA ITJ</strong></span>
+    </div>
+
+    <nav class="nav-links">
+      <!-- Link para rolar até a seção "Sobre a SiGA" -->
+      <a href="#sobre" id="nav_about">Sobre a Biblioteca</a>
+      <!-- Link para WhatsApp -->
+      <a href="https://wa.me/5511912345678" target="_blank" id="nav_contact">Fale com a Secretaria</a>
+    </nav>
+    
+    <div class="language-wrapper">
+      <button class="language-button" aria-label="Selecionar idioma">
+        <img src="/static/Imagens/br.png" class="flag" alt="Bandeira do Brasil">
+        <span>PT</span>
+        <svg viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5"/>
+        </svg>
+      </button>
+
+      <ul class="language-list">
+        <li data-lang="pt" tabindex="0">
+          <img src="/static/Imagens/br.png" class="flag" alt="Português"> Português
+        </li>
+        <li data-lang="en" tabindex="0">
+          <img src="/static/Imagens/us.png" class="flag" alt="English"> English
+        </li>
+        <li data-lang="es" tabindex="0">
+          <img src="/static/Imagens/es.png" class="flag" alt="Español"> Español
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="hero-container">
+    <div class="hero-content">
+      <h1 id="title">Sua biblioteca digital completa</h1>
+      
+      <p id="subtitle">
+        Acesse livros, materiais e recursos educacionais em um só lugar.
+      </p>
+
+      <!-- BARRA DE PESQUISA REMOVIDA -->
+
+      <div class="stats">
+        <span id="stat_materials">+500 materiais</span>
+        <span>•</span>
+        <span id="stat_access">Acesso ilimitado</span>
+      </div>
+      
+      <div class="profiles">
+        <a href="/login_user" class="profile-btn student-btn">
+          <i class="fas fa-user-graduate"></i>
+          <span id="btn_student">Sou Aluno</span>
+        </a>
+        
+        <a href="/login_adm" class="profile-btn admin-btn">
+          <i class="fas fa-user-shield"></i>
+          <span id="btn_admin">Sou Administrador</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="/static/Imagens/GAROTA.jpg" class="humano" alt="Estudante sorrindo segurando cadernos em frente à biblioteca">
+      <div class="bg-shape"></div>
+      <div class="floating-icon icon-1"><i class="fas fa-bookmark"></i></div>
+      <div class="floating-icon icon-2"><i class="fas fa-book-open"></i></div>
+    </div>
+  </main>
+
+  <!-- NOVA SEÇÃO: SOBRE A SiGA -->
+  <section id="sobre" class="about-siga">
+    <div class="section-header">
+      <h2>O que é a <span>SiGA</span>?</h2>
+      <p>Conheça um pouco do nosso trabalho e propósito</p>
+    </div>
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          O <strong>SiGA</strong> (Sistema Integrado de Gestão de Acervo) é a plataforma digital de gerenciamento de bibliotecas escolares. 
+          Nossa missão é democratizar o acesso ao conhecimento, oferecendo um ambiente virtual completo para consulta e empréstimos
+          de materiais acadêmicos.
+        </p>
+        <p>
+          Com um acervo em constante crescimento, o SiGA atende alunos, professores e funcionários, centralizando livros didáticos, 
+          artigos científicos, periódicos e outros recursos educacionais. Tudo isso com acesso ilimitado, 24 horas por dia, 
+          de qualquer dispositivo.
+        </p>
+        <p>
+          Além da praticidade, nossa plataforma prioriza a organização e a inclusão: é possível pesquisar por categorias, 
+          autores e títulos, renovar empréstimos online, tudo isso na palma da sua mão. O SiGA é mais do que uma biblioteca digital – é um portal para o conhecimento,
+          projetado para inspirar e apoiar a jornada acadêmica de cada usuário.
+          <strong>O conhecimento não pode esperar e com o SiGA, está sempre ao seu alcance.</strong>
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="/static/Imagens/takeshi.png" alt="Imagem ilustrativa sobre a SiGA, mostrando um estudante usando um laptop em uma biblioteca moderna">
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: COMO FUNCIONA (3 PASSOS) -->
+  <section class="how-it-works">
+    <div class="section-header">
+      <h2>Comece em <span>3 passos</span></h2>
+      <p>Simples, rápido e gratuito para alunos</p>
+    </div>
+    
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+        <h3>1. Cadastre-se</h3>
+        <p>Crie sua conta gratuita usando seu email institucional.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-search"></i></div>
+        <h3>2. Encontre</h3>
+        <p>Pesquise entre centenas de livros e materiais didáticos.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-book-open"></i></div>
+        <h3>3. Acesse</h3>
+        <p>Leia online ou faça download para estudar onde quiser.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE DESTAQUE DO ACERVO REMOVIDA -->
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p id="footer_copyright">&copy; 2026 SiGA ITJ. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#" id="footer_support"><strong>Suporte</strong></a>
+        <a href="#" id="footer_terms">Termos de Uso</a>
+        <a href="#" id="footer_privacy">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // ===================== TRADUÇÕES COMPLETAS =====================
+  const translations = {
+    pt: {
+      title: "Sua biblioteca digital completa",
+      subtitle: "Acesse livros, materiais e recursos educacionais em um só lugar.",
+      stat_materials: "+500 materiais",
+      stat_access: "Acesso ilimitado",
+      btn_student: "Sou Aluno",
+      btn_admin: "Sou Administrador",
+      nav_about: "Sobre a Biblioteca",
+      nav_contact: "Fale com a Secretaria",
+      footer_copyright: "© 2026 SiGA ITJ. Todos os direitos reservados.",
+      footer_support: "Suporte",
+      footer_terms: "Termos de Uso",
+      footer_privacy: "Política de Privacidade"
+    },
+    en: {
+      title: "Your complete digital library",
+      subtitle: "Access books, materials and educational resources in one place.",
+      stat_materials: "+500 materials",
+      stat_access: "Unlimited access",
+      btn_student: "I'm a Student",
+      btn_admin: "I'm an Administrator",
+      nav_about: "About Library",
+      nav_contact: "Contact Support",
+      footer_copyright: "© 2026 SiGA ITJ. All rights reserved.",
+      footer_support: "Support",
+      footer_terms: "Terms of Use",
+      footer_privacy: "Privacy Policy"
+    },
+    es: {
+      title: "Tu biblioteca digital completa",
+      subtitle: "Accede a libros, materiales y recursos educativos en un solo lugar.",
+      stat_materials: "+500 materiales",
+      stat_access: "Acceso ilimitado",
+      btn_student: "Soy Alumno",
+      btn_admin: "Soy Administrador",
+      nav_about: "Sobre la Biblioteca",
+      nav_contact: "Contactar Secretaría",
+      footer_copyright: "© 2026 SiGA ITJ. Todos los derechos reservados.",
+      footer_support: "Soporte",
+      footer_terms: "Términos de Uso",
+      footer_privacy: "Política de Privacidad"
+    }
+  };
+
+  // ===================== INICIALIZAÇÃO =====================
+  const wrapper = document.querySelector(".language-wrapper");
+  const button = document.querySelector(".language-button");
+  const items = document.querySelectorAll(".language-list li");
+  const mainFlag = button.querySelector(".flag");
+  const langSpan = button.querySelector("span");
+
+  // Aplica o idioma atual (português por padrão)
+  function applyLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    document.getElementById("title").textContent = t.title;
+    document.getElementById("subtitle").textContent = t.subtitle;
+    document.getElementById("stat_materials").textContent = t.stat_materials;
+    document.getElementById("stat_access").textContent = t.stat_access;
+    document.getElementById("btn_student").textContent = t.btn_student;
+    document.getElementById("btn_admin").textContent = t.btn_admin;
+    document.getElementById("nav_about").textContent = t.nav_about;
+    document.getElementById("nav_contact").textContent = t.nav_contact;
+    document.getElementById("footer_copyright").textContent = t.footer_copyright;
+    document.getElementById("footer_support").textContent = t.footer_support;
+    document.getElementById("footer_terms").textContent = t.footer_terms;
+    document.getElementById("footer_privacy").textContent = t.footer_privacy;
+  }
+
+  // Abrir/fechar menu
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
+    wrapper.classList.toggle("open");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!wrapper.contains(e.target)) {
+      wrapper.classList.remove("open");
+    }
+  });
+
+  // Trocar idioma ao clicar nas opções
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      const lang = item.dataset.lang;
+      const clickedFlag = item.querySelector(".flag").src;
+      const clickedAlt = item.querySelector(".flag").alt;
+
+      // Atualiza o botão
+      langSpan.textContent = lang.toUpperCase();
+      mainFlag.src = clickedFlag;
+      mainFlag.alt = "Bandeira " + clickedAlt;
+
+      // Aplica as traduções
+      applyLanguage(lang);
+
+      // Fecha o menu
+      wrapper.classList.remove("open");
+    });
+  });
+
+  // Define o idioma inicial (português)
+  applyLanguage("pt");
+
+  // ===================== LINKS DO FOOTER (MANTIDOS COMO ALERT) =====================
+  document.getElementById('footer_support').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('💬 Suporte SiGA: suporte@sigaitj.com\nWhatsApp: (11) 91234-5678');
+  });
+
+  document.getElementById('footer_terms').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('📄 Termos de Uso: Este é um ambiente acadêmico. O uso indevido implica em sanções disciplinares.');
+  });
+
+  document.getElementById('footer_privacy').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('🔒 Política de Privacidade: Seus dados são utilizados apenas para fins institucionais e não são compartilhados.');
+  });
+
+  // Os links "Sobre a Biblioteca" e "Fale com a Secretaria" agora são diretos (href="#sobre" e WhatsApp), sem listeners extras.
+</script>
+
+</body>
+</html>

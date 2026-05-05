@@ -1,0 +1,14 @@
+﻿# Ambiente virtual
+venv/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Variáveis de ambiente
+.env
+
+# Pastas antigas que sobraram (se for o caso)
+bn/
+Icones/
