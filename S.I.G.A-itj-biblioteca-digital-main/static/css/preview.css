@@ -1,0 +1,451 @@
+﻿/* ==========================================================================
+   1. RESET E ESTRUTURA GLOBAL (COM SCROLL LIBERADO)
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;  /* Rolagem suave para âncoras */
+}
+
+body {
+  background-color: #fcfdfd;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;   /* SCROLL LIBERADO */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Acessibilidade - Aparece apenas na navegação por teclado (Tab) */
+a:focus-visible, button:focus-visible {
+  outline: 3px solid #17c8cc;
+  outline-offset: 2px;
+}
+
+a:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+
+
+
+/* ==========================================================================
+   2. HEADER (TOP-NAV)
+   ========================================================================== */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 80px;
+  flex-shrink: 0;
+  z-index: 10;
+  gap: 30px;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(40px, 2vw, 30px);
+  font-weight: bold;
+  color: #0b4b9b;
+}
+
+.nav-links {
+  display: flex;
+  margin-left: auto; 
+  gap: clamp(20px, 4vw, 50px); 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 0.3s;
+}
+.nav-links a:hover { color: #0b4b9b; }
+
+/* IDIOMA - WRAPPER */
+.language-wrapper {
+  position: relative;
+  right: -45px;
+  z-index: 100;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.2s;
+  font-weight: 500;
+  margin: 0px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  appearance: none;
+}
+.language-button:hover { background: #f0f0f0; }
+
+.flag {
+  width: 25px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.language-button svg {
+  width: 14px;
+  height: 14px;
+  stroke: #333;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+  margin-left: 4px;
+}
+
+.language-list {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0px;
+  padding: 8px 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.language-list li {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+.language-list li:hover { background: #f4f6f9; }
+
+.language-wrapper.open .language-list { display: block; }
+.language-wrapper.open svg { transform: rotate(180deg); }
+
+/* ==========================================================================
+   3. CONTEÚDO PRINCIPAL (HERO)
+   ========================================================================== */
+.hero-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 40px;
+  min-height: calc(100vh - 80px - 70px);
+  position: relative;
+  z-index: 2;  /* Acima da forma azul */
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  color: rgb(11, 75, 155);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  color: #333;
+  font-size: clamp(14px, 1.2vw, 17px);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* BARRA DE PESQUISA REMOVIDA */
+
+.stats {
+  margin-bottom: 30px;
+  color: #555;
+  display: flex;
+  gap: 15px;
+  font-weight: 500;
+}
+
+.profiles { display: flex; gap: 15px; }
+
+.profile-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.admin-btn { background: #0b4b9b; color: #fff; }
+.student-btn { background: #17c8cc; color: #fff; }
+.profile-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+/* ==========================================================================
+   4. IMAGEM DA GAROTA (com fundo de formas)
+   ========================================================================== */
+.hero-image {
+  position: relative;
+  width: 45%; 
+  max-width: 400px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+/* Forma azul reposicionada dentro do container da imagem */
+.hero-image .bg-shape {
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 167%;          /* levemente maior que a imagem para criar o efeito orgânico */
+  height: 127%;
+  background-color: rgb(11, 75, 155);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  z-index: 1;           /* atrás da imagem (que tem z-index: 2) */
+  opacity: 0.9;
+
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transition: transform 0.5s ease;
+}
+
+.floating-icon {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  animation: float 3s ease-in-out infinite;
+}
+
+.icon-1 { background-color: #3e6aa0; top: 20%; left: 0; translate: -50% 0; }
+.icon-2 { background-color: #17c8cc; bottom: 15%; right: 0; translate: 50% 0; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ==========================================================================
+   5. NOVA SEÇÃO: SOBRE A SiGA
+   ========================================================================== */
+.about-siga {
+  padding: 70px 8%;
+  background: #ffffff;
+  text-align: center;
+
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1 1 500px;
+  text-align: left;
+}
+
+.about-text p {
+  color: #333;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  
+}
+
+/* ==========================================================================
+   6. SEÇÃO COMO FUNCIONA (3 PASSOS)
+   ========================================================================== */
+.how-it-works {
+  padding: 80px 8%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  color: #0b4b9b;
+  margin-bottom: 10px;
+}
+.section-header h2 span { color: #17c8cc; }
+.section-header p { color: #666; margin-bottom: 50px; }
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step-card {
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 20px;
+  transition: 0.3s;
+  border: 1px solid #9a989861;
+}
+.step-card:hover { transform: translateY(-10px); box-shadow: 20px 20px 30px rgba(0,0,0,0.05); }
+
+.step-icon {
+  width: 70px; height: 70px;
+  background: #e6f0ff;
+  color: #0b4b9b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 20px;
+}
+.step-card h3 { margin-bottom: 10px; color: #333; }
+.step-card p { color: #666; font-size: 14px; line-height: 1.6; }
+
+/* ==========================================================================
+   7. BOTÃO WHATSAPP FLUTUANTE (MANTIDO)
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  width: 60px; height: 60px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+  z-index: 999;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background: #1ebea5;
+}
+
+/* ==========================================================================
+   8. RODAPÉ (FOOTER) – SEMPRE NO FINAL
+   ========================================================================== */
+.main-footer {
+  background: #f4f6f9;
+  padding: 15px 5%;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+  z-index: 10;
+  margin-top: auto; /* Garante que o footer fique no final se o conteúdo for menor */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  font-size: 13px;
+  color: #777;
+}
+
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { text-decoration: none; color: #777; }
+.footer-links a:hover { color: #0b4b9b; }
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MOBILE)
+   ========================================================================== */
+@media (max-width: 900px) {
+  body { overflow-y: auto; height: auto; }
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 5%;
+    gap: 30px;
+    min-height: auto;
+  }
+  .hero-image { justify-content: center; max-width: 100%; }
+  .hero-image img { max-height: 45vh; }
+  .nav-links { display: none; }
+  .footer-content { flex-direction: column; gap: 10px; }
+  .steps-container { gap: 20px; }
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-text {
+    text-align: center;
+  }
+}
